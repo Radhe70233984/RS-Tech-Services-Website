@@ -3,10 +3,12 @@ const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+}
 
 // Close mobile menu when a link is clicked
 navLinks.forEach(link => {
@@ -36,22 +38,24 @@ navLinks.forEach(link => {
 // Contact Form Handling
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-    
-    // In a real application, you would send this data to a server
-    // For now, we'll just show an alert and reset the form
-    alert(`Thank you, ${name}! Your message has been received. We'll get back to you soon at ${email}.`);
-    
-    // Reset form
-    contactForm.reset();
-});
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        // In a real application, you would send this data to a server
+        // For now, we'll just show an alert and reset the form
+        alert(`Thank you, ${name}! Your message has been received. We'll get back to you soon at ${email}.`);
+        
+        // Reset form
+        contactForm.reset();
+    });
+}
 
 // Combined scroll handler for performance
 let lastScroll = 0;

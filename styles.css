@@ -8,6 +8,8 @@
     --primary-color: #2563eb;
     --secondary-color: #1e40af;
     --text-color: #333;
+    --text-muted: #666;
+    --border-color: #ddd;
     --light-bg: #f8fafc;
     --white: #ffffff;
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -217,7 +219,7 @@ section {
 }
 
 .service-card p {
-    color: #666;
+    color: var(--text-muted);
     line-height: 1.6;
 }
 
@@ -241,7 +243,7 @@ section {
 .form-group textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     font-size: 1rem;
     font-family: inherit;
