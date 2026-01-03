@@ -53,18 +53,26 @@ contactForm.addEventListener('submit', (e) => {
     contactForm.reset();
 });
 
-// Add active state to navigation links based on scroll position
+// Combined scroll handler for performance
+let lastScroll = 0;
+const navbar = document.querySelector('.navbar');
+
+// Add transition to navbar
+navbar.style.transition = 'transform 0.3s ease';
+
+// Single scroll event listener for better performance
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section');
-    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+    const navbarHeight = navbar.offsetHeight;
+    const currentScroll = window.scrollY;
     
+    // Update active navigation link based on scroll position
     let current = '';
     
     sections.forEach(section => {
         const sectionTop = section.offsetTop - navbarHeight - 100;
-        const sectionHeight = section.clientHeight;
         
-        if (window.pageYOffset >= sectionTop) {
+        if (currentScroll >= sectionTop) {
             current = section.getAttribute('id');
         }
     });
@@ -75,15 +83,8 @@ window.addEventListener('scroll', () => {
             link.classList.add('active');
         }
     });
-});
-
-// Add scroll effect to navbar
-let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
     
+    // Hide/show navbar on scroll
     if (currentScroll > lastScroll && currentScroll > 100) {
         navbar.style.transform = 'translateY(-100%)';
     } else {
@@ -92,6 +93,3 @@ window.addEventListener('scroll', () => {
     
     lastScroll = currentScroll;
 });
-
-// Add transition to navbar
-navbar.style.transition = 'transform 0.3s ease';
